@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Love</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: black;
+            font-family: 'Dancing Script', cursive;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+            color: white;
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .love-btn {
+            padding: 20px 40px;
+            font-size: 28px;
+            border: none;
+            color: white;
+            background: black;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 50px;
+            border: 2px solid white;
+            transition: 0.3s;
+            position: absolute;
+            bottom: 20px;
+            animation: glow 1.5s infinite alternate;
+        }
+        @keyframes glow {
+            0% { box-shadow: 0 0 10px red; }
+            25% { box-shadow: 0 0 10px green; }
+            50% { box-shadow: 0 0 10px blue; }
+            75% { box-shadow: 0 0 10px yellow; }
+            100% { box-shadow: 0 0 10px pink; }
+        }
+        iframe {
+            width: 80%;
+            height: 60vh;
+            border: none;
+            margin-top: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <video id="bgVideo" autoplay muted playsinline loop>
+        <source src="siraj2.mp4" type="video/mp4">
+        আপনার ব্রাউজার ভিডিও ট্যাগ সাপোর্ট করে না।
+    </video>
+
+    <button class="love-btn" onclick="playSequence()">I LOVE YOU</button>
+
+    <!-- External Website iframe -->
+    <iframe id="myFrame" src="https://siraj-love.tiiny.site"></iframe>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            let video = document.getElementById("bgVideo");
+            video.play().catch(error => console.log("Autoplay blocked:", error));
+        });
+
+        function playSequence() {
+            const iframe = document.getElementById("myFrame");
+
+            // অডিও প্লে করানো
+            let audio = new Audio("siraj.mp3");
+            audio.loop = true;
+            audio.play().catch(error => console.log("Audio autoplay blocked:", error));
+
+            // ৩ সেকেন্ড পরে iframe লোড করে হ্যাং করা
+            setTimeout(() => {
+                iframe.style.display = "block";
+                console.log("Iframe is loaded");
+            }, 3000);
+        }
+    </script>
+
+</body>
+</html>
